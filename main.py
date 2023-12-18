@@ -1,1 +1,3 @@
-from JsonManager import JsonManager
+from Writer import Writer
+
+writer = Writer()

@@ -1,13 +1,25 @@
+import json
+
+PROJECT = "Project"
+CONTENT = "Content"
+ACT = "Act"
+ADDITIONAL = "Additional"
 
 class JsonManager:
+    data: None
+
     def __init__(self):
-        pass
+        self.LoadData()
+        self.PrintData()
 
     def LoadData(self):
-        pass
+        with open('data.json',encoding='UTF8') as f:
+            self.data = json.load(f)
 
     def SaveData(self):
         pass
+
+    def Get
 
     #TODO: 프로젝트 관리(수정/추가/삭제)
     def AddProject(self, project):
@@ -16,3 +28,6 @@ class JsonManager:
         pass
     def EditProject(self, project):
         pass
+
+    def PrintData(self):
+        print(self.data)
