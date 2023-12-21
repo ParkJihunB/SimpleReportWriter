@@ -1,7 +1,6 @@
 import json
 
-#데이터 추가 기입할거
-    #가시화
+
 
 
 class JsonManager:
