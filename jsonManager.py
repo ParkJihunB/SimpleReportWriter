@@ -1,8 +1,5 @@
 import json
 
-
-
-
 class JsonManager:
     PROJECT = "Project"
     CONTENT_PREFIX = "Content_Prefix"

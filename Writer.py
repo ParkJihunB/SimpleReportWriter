@@ -3,8 +3,10 @@ import random
 
 class Writer:
     jsonManager: JsonManager
+    selected_project: str 
     def __init__(self):
         self.jsonManager = JsonManager()
+        self.selected_project = "ADD"
         self.Write()
         self.Write()
         self.Write()
@@ -13,10 +15,22 @@ class Writer:
     def Write(self):
         result = ""
         for key in self.jsonManager.data.keys():
+            #순차적으로 key를 받는다
             current_item = self.jsonManager.data[key]
+             #해당 key의 하위 아이템을 다 돌고 나온다
             result += self.GetRandomValue(current_item, "")
         result = self.LookOverResult(result)
         print(result)
+
+    #선택 가능한 key일 경우 검사
+    def CheckKey(self, key, target, result: str):
+        if(key == self.jsonManager.PROJECT):
+            return self.SelectProject(target, result)
+        return ""
+    
+    def SelectProject(self, target, result: str):
+        result += self.selected_project
+        return self.GetRandomValue(target[self.selected_project], result)
 
     #dict,list 뒤섞인 값에서 모두 랜덤 추출하기(재귀 사용)
     def GetRandomValue(self, target, result: str):
