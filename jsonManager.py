@@ -6,25 +6,30 @@ class JsonManager:
     CONTENT = "Content"
     ACT = "Act"
     ACT_SUFFIX = "Act_Suffix"
+
     data: None
+    setting: None
 
     def __init__(self):
         self.LoadData()
 
     def LoadData(self):
-        with open('realdata.json',encoding='UTF8') as f:
+        with open('data.json',encoding='UTF8') as f:
             self.data = json.load(f)
+        with open('setting.json',encoding='UTF8') as f:
+            self.setting = json.load(f)
 
-    def SaveData(self):
-        pass
-
-    #TODO: 프로젝트 관리(수정/추가/삭제)
-    def AddProject(self, project):
-        pass
-    def DeleteProject(self, project):
-        pass
-    def EditProject(self, project):
-        pass
+    def SaveSelectedProject(self, selected):
+        self.setting["selected_project"] = selected
+        with open("setting.json",'w',encoding='UTF8') as f:
+            json.dump(self.setting, f, ensure_ascii=False)
+    
+    def GetSelectedProejct(self): return self.setting["selected_project"]
+    def GetProejct(self): return self.data[self.PROJECT]
+    def GetContentPrefix(self): return self.data[self.CONTENT_PREFIX]
+    def GetContent(self): return self.data[self.CONTENT]
+    def GetAct(self): return self.data[self.ACT]
+    def GetActSuffix(self): return self.data[self.ACT_SUFFIX]
 
     def PrintData(self):
         print(self.data)
