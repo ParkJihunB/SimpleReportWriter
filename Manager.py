@@ -26,7 +26,7 @@ class Manager:
         self.dataM.SaveSelectedProject(selected)
 
     def btn_CreateProejct(self,new_project:str): pass
-    def btn_EditProejct(self, project: str, new_project): pass
+    def btn_EditProejct(self, new_project:str): pass
     def btn_DeleteProejct(self,project:str): pass
 
     def GetProjectList(self) -> list:
