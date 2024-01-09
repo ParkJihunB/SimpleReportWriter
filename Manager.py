@@ -14,17 +14,17 @@ class Manager:
         self.dataM = JsonManager()
         self.writer = Writer()
         self.selected_project = self.dataM.GetSelectedProejct()
-        if not(self.selected_project in self.dataM.GetProejct()):
-            self.cb_SelectProject(list(self.dataM.GetProejct().keys())[0])
+        if not(self.selected_project in self.dataM.GetProject()):
+            self.cb_SelectProject(list(self.dataM.GetProject().keys())[0])
 
-    def btn_Write(self): pass
-        # project_suffix = self.writer.GetRandomValue(self.dataM.GetProejct()[self.selected_project])
-        # content_prefix = self.writer.GetRandomValue(self.dataM.GetContentPrefix())
-        # content = self.writer.GetRandomValue(self.dataM.GetContent())
-        # act = self.writer.GetRandomValue(self.dataM.GetAct())
-        # act_suffix = self.writer.GetRandomValue(self.dataM.GetActSuffix())
-        # result = self.writer.LookOverResult(self.selected_project+" "+project_suffix+content_prefix+content+act+act_suffix)
-        # return result
+        self.project = Project(self.dataM.GetProject())
+        self.content = Content(self.dataM.GetContentPrefix(),self.dataM.GetContent(),None)
+        self.act = Act(None, self.dataM.GetAct(),self.dataM.GetActSuffix())
+
+    def btn_Write(self):
+        print(self.project.GetRandomData())
+        print(self.content.GetRandomData())
+        print(self.act.GetRandomData())
 
     def cb_SelectProject(self, selected:str):
         self.selected_project = selected
@@ -35,3 +35,6 @@ class Manager:
     
     def GetSubProjectList(self, selected_project="")->list:
         return self.dataM.data[self.dataM.PROJECT][selected_project]
+
+m = Manager()
+m.btn_Write()

@@ -9,7 +9,7 @@ class Act():
 
     def GetRandomPrefix(self): #선택 안함 포함 랜덤 추출
         if self.prefix is None: return ""
-        result = self.prefix[random.randrange(0,len(self.prefix)+1)]
+        result = random.randrange(0,len(self.prefix)+1)
         if result >= len(self.prefix): return ""
         return self.prefix[result]
 
@@ -17,7 +17,7 @@ class Act():
         all_list = [] #중심 그룹에서 모든 아이템을 가져와 랜덤으로 고른다
         for key in self.data.keys():
             for item in self.data[key]:
-                all_list.insert(item)
+                all_list.append(item)
         result = all_list[random.randrange(0,len(all_list))]
         #선택된 아이템이 어느 카테고리에 있는지 확인한다
         self.current_belong = ""
@@ -26,8 +26,8 @@ class Act():
                 self.current_belong = key
                 break
         #선택된 카테고리에 맞는 suffix를 랜덤 추출 한다
+        prefix = self.GetRandomPrefix()
         suffix = self.GetRandomSuffix()
-        prefix = self.GetRandomSuffix()
         return " ".join([suffix,result,prefix])
             
     def GetRandomSuffix(self):

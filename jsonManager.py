@@ -14,7 +14,7 @@ class JsonManager:
         self.LoadData()
 
     def LoadData(self):
-        with open('data.json',encoding='UTF8') as f:
+        with open('data_.json',encoding='UTF8') as f:
             self.data = json.load(f)
         with open('setting.json',encoding='UTF8') as f:
             self.setting = json.load(f)
@@ -25,7 +25,7 @@ class JsonManager:
             json.dump(self.setting, f, ensure_ascii=False)
     
     def GetSelectedProejct(self): return self.setting["selected_project"]
-    def GetProejct(self): return self.data[self.PROJECT]
+    def GetProject(self): return self.data[self.PROJECT]
     def GetContentPrefix(self): return self.data[self.CONTENT_PREFIX]
     def GetContent(self): return self.data[self.CONTENT]
     def GetAct(self): return self.data[self.ACT]
