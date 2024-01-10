@@ -47,11 +47,6 @@ class GuiManager(QWidget):
     def cb_Project(self): 
         self.manager.cb_SelectProject(self.cb_project.currentText())
         self.sub_project_update(self.manager.GetSubProjectList(self.cb_project.currentText()))
-    
-    def dl_project_open(self):
-        self.dl_project.setWindowModality(Qt.WindowModality.ApplicationModal)
-        self.le_proejct.setText(self.manager.selected_project)
-        self.dl_project.show()
 
     #그 외 gui 함수
     def sub_project_update(self,sub_project_list:list):

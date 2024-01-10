@@ -28,10 +28,8 @@ class Act():
         #선택된 카테고리에 맞는 suffix를 랜덤 추출 한다
         prefix = self.GetRandomPrefix()
         suffix = self.GetRandomSuffix()
-        return " ".join([suffix,result,prefix])
+        return " ".join([prefix,result,suffix])
             
     def GetRandomSuffix(self):
-        if self.suffix is None: return ""
-        selected_suffix = self.suffix[self.current_belong]
-        result = self.selected_suffix[random.randrange(0,len(selected_suffix))]
-        return selected_suffix[result]
+        result = self.suffix[random.randrange(0,len(self.suffix))]
+        return result
