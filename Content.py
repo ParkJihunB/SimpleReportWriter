@@ -7,12 +7,6 @@ class Content():
         self.suffix = suffix
         self.current_belong = ""
 
-    def GetRandomPrefix(self): #선택 안함 포함 랜덤 추출
-        if self.prefix is None: return ""
-        result = random.randrange(0,len(self.prefix)+1)
-        if result >= len(self.prefix): return ""
-        return self.prefix[result]
-
     def GetRandomData(self):
         all_list = [] #중심 그룹에서 모든 아이템을 가져와 랜덤으로 고른다
         for key in self.data.keys():
@@ -29,9 +23,14 @@ class Content():
         prefix = self.GetRandomPrefix()
         suffix = self.GetRandomSuffix()
         return " ".join([prefix,result,suffix])
-            
+    
+    def GetRandomPrefix(self): #선택 안함 포함 랜덤 추출
+        if self.prefix is None: return ""
+        result = random.randrange(0,len(self.prefix)+1)
+        if result >= len(self.prefix): return ""
+        return self.prefix[result]
+    
     def GetRandomSuffix(self):
         if self.suffix is None: return ""
-        selected_suffix = self.suffix[self.current_belong]
-        result = selected_suffix[random.randrange(0,len(selected_suffix))]
-        return selected_suffix[result]
+        result = self.suffix[random.randrange(0,len(self.suffix))]
+        return result
